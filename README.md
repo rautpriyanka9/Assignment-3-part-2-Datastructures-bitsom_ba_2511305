@@ -1,6 +1,6 @@
-# 🍽️ Restaurant Menu & Order Management System
+#  Restaurant Menu & Order Management System
 
-## 📌 Overview
+##  Overview
 This project implements a **Restaurant Order Management System** using Python's core data structures such as **lists, dictionaries, and nested structures**.
 
 The system simulates real-world restaurant operations including:
@@ -11,7 +11,7 @@ The system simulates real-world restaurant operations including:
 
 ---
 
-## 🧠 Concepts Used
+##  Concepts Used
 - Dictionaries & Nested Dictionaries  
 - Lists & List of Dictionaries  
 - Loops (for, while)  
@@ -22,13 +22,13 @@ The system simulates real-world restaurant operations including:
 
 ---
 
-## 📂 File Structure
+##  File Structure
 
 restaurant_management.py
 
 ---
 
-## 🚀 Tasks Implemented
+##  Tasks Implemented
 
 ### 🔹 Task 1 — Explore the Menu
 - Display menu grouped by category (Starters, Mains, Desserts)
@@ -72,7 +72,3 @@ restaurant_management.py
 
 ---
 
-## ▶️ How to Run
-
-```bash
-python restaurant_management.py
