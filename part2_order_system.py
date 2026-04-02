@@ -113,3 +113,125 @@ print("Most expensive item:", exp_item, "- ₹", max_price)
 print("\nItems under ₹150:")
 for item, price in cheap_items:
     print(item, "- ₹", price)
+
+    # ================================
+# Task 2 — Cart Operations
+# ================================
+
+print("\n===== Task 2: Cart Operations =====\n")
+
+cart = []
+
+
+# -------- Add Item Function --------
+def add_to_cart(item_name, qty):
+
+    # check if item exists
+    if item_name not in menu:
+        print(item_name, "not found in menu")
+        return
+
+    # check availability
+    if not menu[item_name]["available"]:
+        print(item_name, "is currently unavailable")
+        return
+
+    # check if already in cart
+    for item in cart:
+        if item["item"] == item_name:
+            item["quantity"] += qty
+            print(item_name, "quantity updated to", item["quantity"])
+            return
+
+    # add new item
+    cart.append({
+        "item": item_name,
+        "quantity": qty,
+        "price": menu[item_name]["price"]
+    })
+
+    print(item_name, "added to cart")
+
+
+# -------- Remove Item Function --------
+def remove_from_cart(item_name):
+
+    for item in cart:
+        if item["item"] == item_name:
+            cart.remove(item)
+            print(item_name, "removed from cart")
+            return
+
+    print(item_name, "not found in cart")
+
+
+# -------- Update Quantity --------
+def update_quantity(item_name, qty):
+
+    for item in cart:
+        if item["item"] == item_name:
+            item["quantity"] = qty
+            print(item_name, "quantity updated to", qty)
+            return
+
+    print(item_name, "not found in cart")
+
+
+# -------- Print Cart --------
+def print_cart():
+    print("\nCurrent Cart:")
+    if not cart:
+        print("Cart is empty")
+        return
+
+    for item in cart:
+        print(item["item"], "x", item["quantity"])
+    print()
+
+
+# ================================
+# Simulation Steps
+# ================================
+
+add_to_cart("Paneer Tikka", 2)
+print_cart()
+
+add_to_cart("Gulab Jamun", 1)
+print_cart()
+
+add_to_cart("Paneer Tikka", 1)   # should update to 3
+print_cart()
+
+add_to_cart("Mystery Burger", 1)  # not in menu
+print_cart()
+
+add_to_cart("Chicken Wings", 1)   # unavailable
+print_cart()
+
+remove_from_cart("Gulab Jamun")
+print_cart()
+
+
+# ================================
+# Order Summary
+# ================================
+
+print("\n========== Order Summary ==========")
+
+subtotal = 0
+
+for item in cart:
+    item_total = item["quantity"] * item["price"]
+    subtotal += item_total
+
+    print(f"{item['item']:<18} x{item['quantity']}   ₹{item_total:.2f}")
+
+print("------------------------------------")
+
+gst = subtotal * 0.05
+total = subtotal + gst
+
+print(f"Subtotal:           ₹{subtotal:.2f}")
+print(f"GST (5%):           ₹{gst:.2f}")
+print(f"Total Payable:      ₹{total:.2f}")
+print("====================================")
